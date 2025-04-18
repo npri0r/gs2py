@@ -20,7 +20,6 @@ class converge:
             pyro,  # pyro object
             tolerance=0.01,
             gs2_directory="~/gs2/bin/gs2",
-            debug=False,
             max=100  # max number of simulations before force quitting
     ):
         # stores the pyro object
@@ -29,8 +28,6 @@ class converge:
         self.tolerance = tolerance
         # gs2 directory
         self.gs2_directory = gs2_directory
-        # debug mode
-        self.debug = debug
         # max number of simulations
         self.max = max
 
@@ -49,7 +46,6 @@ class converge:
         param_list = []  # stores parameter values for each run
         measure_list = []  # stores calculated values for each run
         param_value = param_initial_value - param_initial_increment  # sets initial parameter
-        param_increment = param_initial_increment  # sets initial increment
         runtime_list = []  # stores runtime_list
 
         # file management
@@ -157,14 +153,11 @@ class scan:
             self,
             pyro,  # pyro object
             gs2_directory="~/gs2/bin/gs2",
-            debug=False,
     ):
         # stores the pyro object
         self.pyro = pyro
         # gs2 directory
         self.gs2_directory = gs2_directory
-        # debug mode
-        self.debug = debug
 
     def run(
             self,
@@ -255,7 +248,6 @@ class scan:
             smart_data,
             folder_name
     ):
-        print("___")
         scan_data.sort()
         level = smart_data[0]
         indx = smart_data[3]
@@ -271,11 +263,6 @@ class scan:
         else:
             dev = smart_data[1]
             mean = smart_data[2]
-        print("Level:", level)
-        print("Cap:", cap)
-        print("Dev + mean:", dev + mean)
-        print("Diff:", diff)
-        print("Data:", scan_data.param_data)
         if level < cap:
             level += 1
             i = 0
@@ -393,7 +380,7 @@ class data:
 
     def new_load(
             self,
-            title,
+            title="",
     ):
 
         self.param_data.append([])
