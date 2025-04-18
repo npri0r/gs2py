@@ -74,9 +74,43 @@ Returns:
 * data object
 
 ### Class data
-#### print
+````python
+gs2py.data(param,measure)
+````
+The data object is used to load, contain and process data from GS2 scans, as well as grouped data from multiple scans.
+
+Arguments:
+* param: *str*, the parameter being changed between runs.
+* measure: *list*, the names of the measurements to be obtained from GS2 output data.
 #### new_load
+````python
+data.new_load(title)
+````
+Prepares the data object for a new set of data points. 
+Arguments:
+* title: *str, default=""*, used in the legend of graphs that contain multiple runs. Useful for keeping track of data.
 #### load
+````python
+data.load(path)
+````
+Loads in a single data point and adds it onto the end of existing data, or an empty dataset created by new_load.
+Arguments:
+* path: *path*, path to the .out.nc file.
 #### mult_load
+````python
+data.mult_load(path, title)
+````
+Creates an empty dataset (new_load should NOT be called before mult_load), then loads all data within a folder.
+Arguments:
+* path: *path*, the path to the folder containing teh data.
+* title: *str, default=""*, used in the legend of graphs that contain multiple runs. Useful for keeping track of data.
 #### sort
+````python
+data.sort()
+````
+Sorts the last data entry within the object.
 #### graph
+````python
+data.graph(markersize=5, marker="+", linestyle="")
+````
+Plots graphs for each type of measured quantity, with all data for the quantity plotted on the same graph. The arguments are idential to matplotlib graphing arguments.
