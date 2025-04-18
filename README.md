@@ -102,6 +102,7 @@ Arguments:
 data.load(path)
 ````
 Loads in a single data point and adds it onto the end of existing data, or an empty dataset created by new_load.
+
 Arguments:
 * path: *path*, path to the .out.nc file.
 #### mult_load
@@ -109,6 +110,7 @@ Arguments:
 data.mult_load(path, title)
 ````
 Creates an empty dataset (new_load should NOT be called before mult_load), then loads all data within a folder.
+
 Arguments:
 * path: *path*, the path to the folder containing teh data.
 * title: *str, default=""*, used in the legend of graphs that contain multiple runs. Useful for keeping track of data.
